@@ -35,7 +35,7 @@ create table STV202312114__STAGING.group_log(
     user_id int,
     user_id_from int,
     event varchar(20),
-    datetime timestamp
+    datetime timestamp_tag
 )
 ORDER BY group_id
 SEGMENTED BY HASH(group_id) ALL NODES

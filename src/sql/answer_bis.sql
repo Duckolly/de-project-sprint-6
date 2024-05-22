@@ -12,10 +12,9 @@ WITH user_group_log AS (
 user_group_messages AS (
     SELECT 
         hg.hk_group_id,
-        COUNT(DISTINCT sa.user_id_from) AS cnt_users_in_group_with_messages
-    FROM STV2024050744__DWH.s_auth_history AS sa
+        COUNT(DISTINCT sa.hk_user_id) AS cnt_users_in_group_with_messages
+    FROM STV2024050744__DWH.l_user_group_activity AS sa
     LEFT JOIN STV2024050744__DWH.h_groups AS hg ON sa.hk_l_user_group_activity = hg.hk_group_id
-    WHERE sa.event = 'message'
     GROUP BY hg.hk_group_id
 )
 
